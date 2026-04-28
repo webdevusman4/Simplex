@@ -1,0 +1,668 @@
+/* SimpleX Exchange - JavaFX Stylesheet */
+/* Dark Theme inspired by Binance */
+
+/* ===== ROOT & COLORS ===== */
+.root {
+    -fx-font-family: "Inter", "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    
+    /* Color Palette */
+    -sx-bg: #0B0E11;
+    -sx-card: #1E2329;
+    -sx-card-hover: #2B3139;
+    -sx-border: #2B3139;
+    -sx-gold: #F0B90B;
+    -sx-gold-hover: #F8D33A;
+    -sx-success: #0ECB81;
+    -sx-danger: #F6465D;
+    -sx-text: #EAECEF;
+    -sx-text-secondary: #848E9C;
+    -sx-text-muted: #5E6673;
+}
+
+.root-container {
+    -fx-background-color: -sx-bg;
+}
+
+.main-container {
+    -fx-background-color: -sx-bg;
+}
+
+.content-area {
+    -fx-background-color: -sx-bg;
+}
+
+/* ===== SCROLLPANE ===== */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical,
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: -sx-border;
+    -fx-background-radius: 4;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.logo-icon {
+    -fx-font-size: 48px;
+    -fx-text-fill: -sx-gold;
+}
+
+.logo-text {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.tagline {
+    -fx-font-size: 14px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.auth-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.screen-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+    -fx-padding: 8 0 0 0;
+}
+
+/* ===== AUTH SCREENS ===== */
+.auth-container {
+    -fx-background-color: -sx-bg;
+}
+
+.auth-input {
+    -fx-background-color: -sx-card;
+    -fx-text-fill: -sx-text;
+    -fx-prompt-text-fill: -sx-text-secondary;
+    -fx-border-color: -sx-border;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12 16;
+    -fx-font-size: 14px;
+}
+
+.auth-input:focused {
+    -fx-border-color: -sx-gold;
+}
+
+.link-text {
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.link {
+    -fx-text-fill: -sx-gold;
+    -fx-border-color: transparent;
+}
+
+.link:hover {
+    -fx-text-fill: -sx-gold-hover;
+}
+
+.demo-box {
+    -fx-background-color: -sx-card;
+    -fx-background-radius: 8;
+    -fx-padding: 16;
+}
+
+.demo-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.demo-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sx-text-muted;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    -fx-background-radius: 8;
+    -fx-padding: 12 24;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-primary {
+    -fx-background-color: -sx-gold;
+    -fx-text-fill: #0B0E11;
+}
+
+.btn-primary:hover {
+    -fx-background-color: -sx-gold-hover;
+}
+
+.btn-secondary {
+    -fx-background-color: -sx-card;
+    -fx-text-fill: -sx-text;
+    -fx-border-color: -sx-border;
+    -fx-border-radius: 8;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: -sx-card-hover;
+}
+
+.btn-success {
+    -fx-background-color: -sx-success;
+    -fx-text-fill: white;
+}
+
+.btn-success:hover {
+    -fx-background-color: derive(-sx-success, 10%);
+}
+
+.btn-danger {
+    -fx-background-color: -sx-danger;
+    -fx-text-fill: white;
+}
+
+.btn-danger:hover {
+    -fx-background-color: derive(-sx-danger, 10%);
+}
+
+.btn-icon {
+    -fx-background-color: -sx-card;
+    -fx-text-fill: -sx-text;
+    -fx-padding: 8 12;
+    -fx-font-size: 16px;
+}
+
+.btn-icon:hover {
+    -fx-background-color: -sx-card-hover;
+}
+
+.btn-full {
+    -fx-min-width: 280;
+    -fx-pref-width: 320;
+}
+
+.btn-large {
+    -fx-padding: 16 24;
+    -fx-font-size: 16px;
+}
+
+.btn-small {
+    -fx-padding: 8 16;
+    -fx-font-size: 12px;
+}
+
+.action-btn {
+    -fx-min-width: 80;
+}
+
+/* ===== SCREEN CONTAINER ===== */
+.screen-container {
+    -fx-background-color: -sx-bg;
+}
+
+/* ===== HEADER ===== */
+.header {
+    -fx-padding: 0 0 8 0;
+}
+
+.welcome-text {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.greeting-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+/* ===== BALANCE CARD ===== */
+.balance-card, .wallet-card {
+    -fx-background-color: linear-gradient(to right, #2B3139, #1E2329);
+    -fx-background-radius: 16;
+    -fx-border-color: -sx-gold;
+    -fx-border-radius: 16;
+    -fx-border-width: 1;
+}
+
+.balance-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.balance-amount {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.balance-info {
+    -fx-font-size: 14px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+/* ===== CRYPTO CARDS ===== */
+.crypto-list {
+    -fx-spacing: 8;
+}
+
+.crypto-card {
+    -fx-background-color: -sx-card;
+    -fx-background-radius: 12;
+}
+
+.crypto-card:hover {
+    -fx-background-color: -sx-card-hover;
+}
+
+.crypto-icon {
+    -fx-background-radius: 20;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.crypto-name {
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.crypto-symbol {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.crypto-price {
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.change-positive {
+    -fx-text-fill: -sx-success;
+    -fx-font-size: 12px;
+}
+
+.change-negative {
+    -fx-text-fill: -sx-danger;
+    -fx-font-size: 12px;
+}
+
+/* ===== TRANSACTIONS ===== */
+.transaction-list {
+    -fx-spacing: 8;
+}
+
+.transaction-item {
+    -fx-background-color: -sx-card;
+    -fx-background-radius: 12;
+}
+
+.tx-icon {
+    -fx-font-size: 20px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.tx-icon-box {
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+    -fx-background-radius: 20;
+}
+
+.tx-icon-buy { -fx-background-color: derive(-sx-success, -60%); }
+.tx-icon-sell { -fx-background-color: derive(-sx-danger, -60%); }
+.tx-icon-deposit { -fx-background-color: derive(-sx-success, -60%); }
+.tx-icon-withdraw { -fx-background-color: derive(-sx-danger, -60%); }
+.tx-icon-transfer { -fx-background-color: derive(-sx-gold, -60%); }
+
+.tx-desc {
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.tx-date {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.tx-credit {
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-success;
+}
+
+.tx-debit {
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-danger;
+}
+
+.tx-crypto-amount {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.tx-status {
+    -fx-font-size: 10px;
+    -fx-padding: 2 8;
+    -fx-background-radius: 4;
+}
+
+.status-completed {
+    -fx-background-color: derive(-sx-success, -60%);
+    -fx-text-fill: -sx-success;
+}
+
+.status-pending {
+    -fx-background-color: derive(-sx-gold, -60%);
+    -fx-text-fill: -sx-gold;
+}
+
+.status-failed {
+    -fx-background-color: derive(-sx-danger, -60%);
+    -fx-text-fill: -sx-danger;
+}
+
+/* ===== FORM ELEMENTS ===== */
+.input-label {
+    -fx-text-fill: -sx-text-secondary;
+    -fx-font-size: 14px;
+}
+
+.amount-input {
+    -fx-background-color: -sx-card;
+    -fx-text-fill: -sx-text;
+    -fx-prompt-text-fill: -sx-text-secondary;
+    -fx-border-color: -sx-border;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12 16;
+    -fx-font-size: 14px;
+}
+
+.amount-input:focused {
+    -fx-border-color: -sx-gold;
+}
+
+.crypto-select {
+    -fx-background-color: -sx-card;
+    -fx-border-color: -sx-border;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 8 12;
+}
+
+.crypto-select .list-cell {
+    -fx-text-fill: -sx-text;
+    -fx-background-color: -sx-card;
+}
+
+.crypto-select-popup .list-view {
+    -fx-background-color: -sx-card;
+}
+
+.crypto-select-popup .list-cell {
+    -fx-text-fill: -sx-text;
+    -fx-background-color: -sx-card;
+}
+
+.crypto-select-popup .list-cell:hover {
+    -fx-background-color: -sx-card-hover;
+}
+
+.price-info, .holding-info {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.total-box {
+    -fx-background-color: -sx-card;
+    -fx-background-radius: 12;
+}
+
+.total-title {
+    -fx-font-size: 14px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.total-amount {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.total-amount-success {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-success;
+}
+
+/* ===== FILTER BAR ===== */
+.filter-bar {
+    -fx-padding: 8 0;
+}
+
+.filter-btn {
+    -fx-background-color: -sx-card;
+    -fx-text-fill: -sx-text-secondary;
+    -fx-padding: 8 16;
+    -fx-font-size: 12px;
+}
+
+.filter-btn:hover {
+    -fx-background-color: -sx-card-hover;
+}
+
+.filter-btn-active {
+    -fx-background-color: -sx-gold;
+    -fx-text-fill: #0B0E11;
+}
+
+/* ===== HOLDINGS ===== */
+.holding-item {
+    -fx-background-color: -sx-card;
+    -fx-background-radius: 12;
+}
+
+.holding-name {
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.holding-amount {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.holding-value {
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+/* ===== ACCORDION ===== */
+.accordion-pane {
+    -fx-background-color: -sx-card;
+}
+
+.accordion-pane > .title {
+    -fx-background-color: -sx-card;
+    -fx-text-fill: -sx-text;
+    -fx-font-weight: bold;
+}
+
+.accordion-pane > .title:hover {
+    -fx-background-color: -sx-card-hover;
+}
+
+.accordion-pane > .content {
+    -fx-background-color: -sx-card;
+}
+
+.note-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sx-text-muted;
+}
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav {
+    -fx-background-color: -sx-card;
+    -fx-padding: 8 0;
+    -fx-border-color: -sx-border;
+    -fx-border-width: 1 0 0 0;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-padding: 8 16;
+}
+
+.nav-button:hover {
+    -fx-background-color: -sx-card-hover;
+}
+
+.nav-icon {
+    -fx-font-size: 20px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.nav-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.nav-button-active .nav-icon,
+.nav-button-active .nav-text {
+    -fx-text-fill: -sx-gold;
+}
+
+/* ===== PIN POPUP ===== */
+.pin-overlay {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+}
+
+.pin-popup {
+    -fx-background-color: -sx-card;
+    -fx-background-radius: 16;
+}
+
+.pin-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.pin-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.pin-dot {
+    -fx-font-size: 24px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.pin-dot-filled {
+    -fx-text-fill: -sx-gold;
+}
+
+.pin-num-btn {
+    -fx-background-color: -sx-card-hover;
+    -fx-text-fill: -sx-text;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 32;
+}
+
+.pin-num-btn:hover {
+    -fx-background-color: derive(-sx-card-hover, 20%);
+}
+
+/* ===== ADMIN ===== */
+.admin-table {
+    -fx-spacing: 8;
+}
+
+.admin-row {
+    -fx-background-color: -sx-card;
+    -fx-background-radius: 12;
+}
+
+.admin-row-title {
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.admin-row-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+.admin-row-date {
+    -fx-font-size: 11px;
+    -fx-text-fill: -sx-text-muted;
+}
+
+.admin-balance {
+    -fx-font-weight: bold;
+    -fx-text-fill: -sx-text;
+}
+
+.admin-crypto {
+    -fx-font-size: 11px;
+    -fx-text-fill: -sx-text-secondary;
+}
+
+/* ===== MESSAGES ===== */
+.error-label {
+    -fx-text-fill: -sx-danger;
+    -fx-font-size: 12px;
+}
+
+.success-label {
+    -fx-text-fill: -sx-success;
+    -fx-font-size: 12px;
+}
+
+.empty-text {
+    -fx-text-fill: -sx-text-muted;
+    -fx-font-size: 14px;
+    -fx-padding: 16;
+}
+
+/* ===== COMBOBOX DROPDOWN FIX ===== */
+.combo-box-popup .list-view {
+    -fx-background-color: -sx-card;
+}
+
+.combo-box-popup .list-cell {
+    -fx-text-fill: -sx-text;
+    -fx-background-color: -sx-card;
+    -fx-padding: 8 12;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: -sx-card-hover;
+}
+
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: -sx-gold;
+    -fx-text-fill: #0B0E11;
+}
