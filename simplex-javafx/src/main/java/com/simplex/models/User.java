@@ -1,6 +1,8 @@
 package com.simplex.models;
 
 import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class User {
@@ -10,6 +12,7 @@ public class User {
     private String pin;
     private double pkrBalance;
     private Map<String, Double> cryptoHoldings;
+    private List<Transaction> transactionHistory;
     private boolean isAdmin;
 
     public User(String id, String name, String email, String pin, double pkrBalance, boolean isAdmin) {
@@ -19,6 +22,7 @@ public class User {
         this.pin = pin;
         this.pkrBalance = pkrBalance;
         this.isAdmin = isAdmin;
+        this.transactionHistory = new ArrayList<>();
         this.cryptoHoldings = new HashMap<>();
         this.cryptoHoldings.put("BTC", 0.0);
         this.cryptoHoldings.put("ETH", 0.0);
@@ -45,6 +49,13 @@ public class User {
     
     public Map<String, Double> getCryptoHoldings() { return cryptoHoldings; }
     public void setCryptoHoldings(Map<String, Double> cryptoHoldings) { this.cryptoHoldings = cryptoHoldings; }
+
+    public List<Transaction> getTransactionHistory() { return transactionHistory; }
+    public void setTransactionHistory(List<Transaction> transactionHistory) { this.transactionHistory = transactionHistory; }
+
+    public void addTransaction(Transaction transaction) {
+        transactionHistory.add(0, transaction);
+    }
     
     public boolean isAdmin() { return isAdmin; }
     public void setAdmin(boolean admin) { isAdmin = admin; }

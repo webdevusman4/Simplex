@@ -10,7 +10,6 @@ public class DataService {
     private Map<String, User> users;
     private Map<String, String> userPasswords; // ADDED: Secure map for passwords
     private Map<String, Crypto> cryptos;
-    private List<Transaction> transactions;
     private List<WithdrawRequest> withdrawRequests;
     private User currentUser;
 
@@ -34,6 +33,12 @@ public class DataService {
         user1.setCryptoBalance("BTC", 0.05);
         user1.setCryptoBalance("ETH", 1.5);
         user1.setCryptoBalance("USDT", 500);
+        user1.addTransaction(new Transaction("t3", Transaction.Type.DEPOSIT, null, 0, 100000,
+                LocalDateTime.now().minusDays(3), Transaction.Status.COMPLETED));
+        user1.addTransaction(new Transaction("t2", Transaction.Type.SELL, "ETH", 0.5, 490000,
+                LocalDateTime.now().minusDays(2), Transaction.Status.COMPLETED));
+        user1.addTransaction(new Transaction("t1", Transaction.Type.BUY, "BTC", 0.01, 265000,
+                LocalDateTime.now().minusDays(1), Transaction.Status.COMPLETED));
         users.put("ahmed@example.com", user1);
         userPasswords.put("ahmed@example.com", "password123"); // Save demo password
 
@@ -48,15 +53,6 @@ public class DataService {
         cryptos.put("USDT", new Crypto("USDT", "Tether", 279, 0.01, "#26A17B"));
         cryptos.put("BNB", new Crypto("BNB", "BNB", 168000, 3.67, "#F0B90B"));
         cryptos.put("XRP", new Crypto("XRP", "XRP", 145, -0.89, "#23292F"));
-
-        // Initialize transactions
-        transactions = new ArrayList<>();
-        transactions.add(new Transaction("t1", Transaction.Type.BUY, "BTC", 0.01, 265000,
-                LocalDateTime.now().minusDays(1), Transaction.Status.COMPLETED));
-        transactions.add(new Transaction("t2", Transaction.Type.SELL, "ETH", 0.5, 490000,
-                LocalDateTime.now().minusDays(2), Transaction.Status.COMPLETED));
-        transactions.add(new Transaction("t3", Transaction.Type.DEPOSIT, null, 0, 100000,
-                LocalDateTime.now().minusDays(3), Transaction.Status.COMPLETED));
 
         // Initialize withdraw requests
         withdrawRequests = new ArrayList<>();
@@ -125,14 +121,17 @@ public class DataService {
 
     // --- Transaction methods ---
     public List<Transaction> getUserTransactions() {
-        return transactions;
+        if (currentUser == null) {
+            return new ArrayList<>();
+        }
+        return currentUser.getTransactionHistory();
     }
 
     public List<Transaction> getFilteredTransactions(Transaction.Type type) {
         if (type == null)
-            return transactions;
+            return getUserTransactions();
         List<Transaction> filtered = new ArrayList<>();
-        for (Transaction t : transactions) {
+        for (Transaction t : getUserTransactions()) {
             if (t.getType() == type) {
                 filtered.add(t);
             }
@@ -141,7 +140,9 @@ public class DataService {
     }
 
     public void addTransaction(Transaction transaction) {
-        transactions.add(0, transaction);
+        if (currentUser != null) {
+            currentUser.addTransaction(transaction);
+        }
     }
 
     // --- Trading methods ---
@@ -206,9 +207,18 @@ public class DataService {
         currentUser.setCryptoBalance(symbol, currentUser.getCryptoBalance(symbol) - amount);
         recipient.setCryptoBalance(symbol, recipient.getCryptoBalance(symbol) + amount);
 
-        addTransaction(new Transaction(
+        Transaction senderTransaction = new Transaction(
                 UUID.randomUUID().toString(),
                 Transaction.Type.TRANSFER_OUT,
+                symbol,
+                amount,
+                value,
+                Transaction.Status.COMPLETED);
+        addTransaction(senderTransaction);
+
+        recipient.addTransaction(new Transaction(
+                UUID.randomUUID().toString(),
+                Transaction.Type.TRANSFER_IN,
                 symbol,
                 amount,
                 value,

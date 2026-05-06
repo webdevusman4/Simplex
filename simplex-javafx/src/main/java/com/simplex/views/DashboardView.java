@@ -183,6 +183,23 @@ public class DashboardView extends BaseView {
         }
     }
 
+    private void updateRecentActivity(User currentUser) {
+        transactionList.getChildren().clear();
+
+        List<Transaction> transactions = currentUser.getTransactionHistory();
+
+        if (transactions.isEmpty()) {
+            Label empty = new Label("No recent activity yet. Make a deposit!");
+            empty.getStyleClass().add("empty-text");
+            transactionList.getChildren().add(empty);
+            return;
+        }
+
+        for (Transaction transaction : transactions) {
+            transactionList.getChildren().add(createTransactionItem(transaction));
+        }
+    }
+
     @Override
     public void refresh(Object data) {
         User user = dataService.getCurrentUser();
@@ -197,19 +214,8 @@ public class DashboardView extends BaseView {
             cryptoList.getChildren().add(createCryptoCard(crypto));
         }
 
-        // Update transactions
-        transactionList.getChildren().clear();
-        List<Transaction> transactions = dataService.getUserTransactions();
-        int count = Math.min(5, transactions.size());
-        for (int i = 0; i < count; i++) {
-            transactionList.getChildren().add(createTransactionItem(transactions.get(i)));
-        }
-
-        if (transactions.isEmpty()) {
-            Label empty = new Label("No transactions yet");
-            empty.getStyleClass().add("empty-text");
-            transactionList.getChildren().add(empty);
-        }
+        // Update recent activity for the logged-in user only.
+        updateRecentActivity(user);
     }
 
     @Override
