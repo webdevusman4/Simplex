@@ -29,7 +29,7 @@ public class HistoryView extends BaseView {
         Label title = new Label("Transaction History");
         title.getStyleClass().add("screen-title");
 
-        // Filter Bar
+        // Filter Bar - Allows users to sort through their saved transactions
         filterBar = new HBox(8);
         filterBar.setAlignment(Pos.CENTER_LEFT);
         filterBar.getStyleClass().add("filter-bar");
@@ -55,7 +55,7 @@ public class HistoryView extends BaseView {
             filterBar.getChildren().add(btn);
         }
 
-        // Transaction List
+        // Transaction List Container
         transactionList = new VBox(8);
 
         ScrollPane scrollPane = new ScrollPane();
@@ -90,9 +90,11 @@ public class HistoryView extends BaseView {
 
     private void updateTransactionList() {
         transactionList.getChildren().clear();
+        
+        // This method now fetches data that was persisted in the User's transaction list
         List<Transaction> transactions = dataService.getFilteredTransactions(currentFilter);
 
-        if (transactions.isEmpty()) {
+        if (transactions == null || transactions.isEmpty()) {
             Label empty = new Label("No transactions found");
             empty.getStyleClass().add("empty-text");
             transactionList.getChildren().add(empty);
@@ -110,7 +112,7 @@ public class HistoryView extends BaseView {
         item.setAlignment(Pos.CENTER_LEFT);
         item.setPadding(new Insets(16));
 
-        // Type Icon
+        // Type Icon representing the transaction action
         VBox iconBox = new VBox();
         iconBox.setAlignment(Pos.CENTER);
         iconBox.getStyleClass().add("tx-icon-box");
@@ -120,7 +122,7 @@ public class HistoryView extends BaseView {
         icon.getStyleClass().add("tx-icon");
         iconBox.getChildren().add(icon);
 
-        // Info
+        // Transaction Details
         VBox info = new VBox(4);
         Label desc = new Label(tx.getDescription());
         desc.getStyleClass().add("tx-desc");
@@ -137,7 +139,7 @@ public class HistoryView extends BaseView {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        // Amount
+        // Monetary Values (Crypto and PKR)
         VBox amountBox = new VBox(4);
         amountBox.setAlignment(Pos.CENTER_RIGHT);
         
@@ -188,6 +190,7 @@ public class HistoryView extends BaseView {
 
     @Override
     public void refresh(Object data) {
+        // Essential: When navigating to History, reset filter and reload UI
         currentFilter = null;
         updateFilterButtons();
         updateTransactionList();

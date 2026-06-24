@@ -2,8 +2,10 @@ package com.simplex.models;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.io.Serializable; // Import this
 
-public class Transaction {
+// Add 'implements Serializable' here
+public class Transaction implements Serializable {
     public enum Type {
         BUY, SELL, DEPOSIT, WITHDRAW, TRANSFER_IN, TRANSFER_OUT
     }

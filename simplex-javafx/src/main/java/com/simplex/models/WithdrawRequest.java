@@ -1,9 +1,13 @@
 package com.simplex.models;
 
+import java.io.Serializable; // Added for Database Persistence
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class WithdrawRequest {
+public class WithdrawRequest implements Serializable {
+    // Standard version ID for serializable classes
+    private static final long serialVersionUID = 1L;
+
     public enum Status {
         PENDING, APPROVED, REJECTED
     }

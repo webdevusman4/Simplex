@@ -1,11 +1,15 @@
 package com.simplex.models;
 
+import java.io.Serializable; // Import this
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class User {
+// Add 'implements Serializable' here
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L; // Recommended for version control
+    
     private String id;
     private String name;
     private String email;
@@ -14,6 +18,7 @@ public class User {
     private Map<String, Double> cryptoHoldings;
     private List<Transaction> transactionHistory;
     private boolean isAdmin;
+
 
     public User(String id, String name, String email, String pin, double pkrBalance, boolean isAdmin) {
         this.id = id;

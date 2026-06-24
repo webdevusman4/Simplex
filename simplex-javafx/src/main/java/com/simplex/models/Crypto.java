@@ -1,6 +1,9 @@
 package com.simplex.models;
 
-public class Crypto {
+import java.io.Serializable; // Import this
+
+// Add 'implements Serializable' here
+public class Crypto implements Serializable {
     private String symbol;
     private String name;
     private double priceInPKR;
