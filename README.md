@@ -185,7 +185,7 @@ Every part of the app has a specific role. Here is how they connect:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    RuPayApp.java                      │
+│                    RuPayApp.java                        │
 │              (Entry point — starts everything)          │
 └───────────────────────┬─────────────────────────────────┘
                         │ creates
